@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog App</title>
-  </head>
-  <body>
-    <h1>Welcome to Blog App</h1>
-  </body>
-</html>
+<%- include('partials/header.ejs') %>
+
+<h1>Welcome to Blog App</h1>
+
+<form action="/create" method="POST">
+  <input type="text" name="title" placeholder="Title" />
+  <textarea name="content" placeholder="Write your blog post here"></textarea>
+  <input type="submit" value="Publish" />
+</form>
+
+<% if (locals.title && locals.content) { %>
+<h3><%= title %></h3>
+<p><%= content %></p>
+<% } %> <%- include('partials/footer.ejs') %>

@@ -1,0 +1,14 @@
+textarea {
+  resize: none;
+  width: 80%;
+  height: 200px;
+}
+
+input[type="text"] {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+}
