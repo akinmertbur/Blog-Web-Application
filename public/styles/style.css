@@ -58,14 +58,21 @@ button[type="submit"]:hover {
   background-color: #0056b3; /* Darker shade of blue on hover */
 }
 
+#btn-submit {
+  background-color: #797979;
+}
+
+#btn-submit:hover {
+  background-color: #333333;
+}
+
 /* Style for anchor tags acting as buttons */
 .button-link {
   display: inline-block; /* Display as block to allow padding and border */
   text-decoration: none; /* Remove default underline */
-  background-color: #007bff; /* Blue background color */
+  background-color: #797979;
   color: #ffffff; /* White text color */
   border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
   padding: 10px 20px; /* Padding for better spacing */
   cursor: pointer; /* Cursor style on hover */
   transition: background-color 0.3s ease; /* Smooth transition for background color change */
@@ -73,22 +80,137 @@ button[type="submit"]:hover {
 
 /* Hover effect */
 .button-link:hover {
+  background-color: #333333;
+  color: white;
+}
+
+/* Style for anchor tags acting as buttons */
+.button-link-edit {
+  display: inline-block; /* Display as block to allow padding and border */
+  text-decoration: none; /* Remove default underline */
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding for better spacing */
+  cursor: pointer; /* Cursor style on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for background color change */
+}
+
+/* Hover effect */
+.button-link-edit:hover {
   background-color: #0056b3; /* Darker shade of blue on hover */
 }
-.container {
-  min-height: 100%;
+
+html {
+  height: 100%;
+}
+
+body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Ensure body takes up at least the viewport height */
+  margin: 0;
 }
 
-.content {
-  flex: 1;
-}
-
-footer {
+.footer {
   width: 100%;
-  background-color: #f8f9fa;
+  background-color: #797979;
   border-top: 1px solid #dee2e6;
   padding: 20px 0;
-  margin-top: auto;
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Style for button container */
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Style for edit button container */
+.edit-button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Style for edit button */
+.edit-button,
+.delete-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Style for edit button hover */
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #0056b3;
+}
+
+nav {
+  background-color: #797979;
+}
+
+/* Form container */
+.blog-create {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+/* Form labels */
+.blog-create label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Form input fields */
+.blog-create input[type="text"],
+.blog-create textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Submit button */
+.blog-create input[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.blog-create input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.blog-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.gap-block {
+  margin-bottom: 150px;
 }
