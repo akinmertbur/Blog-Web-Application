@@ -20,6 +20,10 @@
     <a href="/edit/<%= encodeURIComponent(post.title) %>"
       >Edit <%= post.title %></a
     >
+    <form action="/delete/<%= encodeURIComponent(post.title) %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete <%= post.title %>" />
+    </form>
   </li>
   <% }); %>
 </ul>

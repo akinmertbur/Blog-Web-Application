@@ -8,6 +8,26 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Middleware to override request method based on _method field.
+function methodOverride(req, res, next) {
+  // Check if the request method is POST.
+  if (req.method === "POST") {
+    // Check if _method field exists in request body.
+    if (req.body && typeof req.body === "object" && "_method" in req.body) {
+      // Override request method with the value of _method field.
+      req.method = req.body._method.toUpperCase();
+      // Remove _method field from request body.
+      delete req.body._method;
+    }
+  }
+
+  // Move to the next middleware.
+  next();
+}
+
+// Mount the middleware.
+app.use(methodOverride);
+
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
@@ -63,6 +83,22 @@ app.post("/edit/:postId", (req, res) => {
   // Update the post.
   posts[postIndex].title = updatedTitle;
   posts[postIndex].content = updatedContent;
+
+  res.redirect("/view");
+});
+
+app.delete("/delete/:postId", (req, res) => {
+  const postId = req.params.postId;
+
+  // Find the post to delete.
+  const postIndex = posts.findIndex((post) => post.title === postId);
+  if (postIndex === -1) {
+    res.status(404).send("Post not found");
+    return;
+  }
+
+  // Remove the item from the array
+  posts.splice(postIndex, 1);
 
   res.redirect("/view");
 });
