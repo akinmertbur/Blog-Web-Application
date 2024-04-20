@@ -33,6 +33,40 @@ app.get("/view", (req, res) => {
   });
 });
 
+app.get("/edit/:postId", (req, res) => {
+  // Get postId from the url.
+  const postId = req.params.postId;
+
+  // Check if any post title matches the desired title.
+  const post = posts.find((post) => post.title === postId);
+  if (!post) {
+    res.status(404).send("Post not found!");
+    return;
+  }
+
+  res.render("edit.ejs", { post });
+});
+
+app.post("/edit/:postId", (req, res) => {
+  // Get postId from the url.
+  const postId = req.params.postId;
+  const updatedTitle = req.body["title"];
+  const updatedContent = req.body["content"];
+
+  // Find the post to edit.
+  const postIndex = posts.findIndex((post) => post.title === postId);
+  if (postIndex === -1) {
+    res.status(404).send("Post not found");
+    return;
+  }
+
+  // Update the post.
+  posts[postIndex].title = updatedTitle;
+  posts[postIndex].content = updatedContent;
+
+  res.redirect("/view");
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
